@@ -5,8 +5,7 @@ $(document).ready(function() {
 	const contentArea = $('#content-area');
 	const searchQuery = $("#searchQuery");
 	const btnLoadmore = $('#btnLoadmore');
-	const pocketToken = "a1109626-b5fa-e1d8-703f-676217";
-
+	
 	function initAppReader() {
 		$('.less').hide();
 
@@ -53,17 +52,26 @@ $(document).ready(function() {
 		return tmp.textContent || tmp.innerText || "";
 	}
 
-	function getArticles() {
+	function getArticles(page = 1, contentTo = 'loaded') {
 		console.log('~~~ Get Articles')
 		$.ajax({
-			method: "GET",
+			method: "POST",
+			data: {
+				page: page
+			},
 			url: endpointNews,
 			beforeSend: function (xhr){
-				contentArea.html("");
 				loadingArea.show();
 			},
 			success: function (results) {
-				contentArea.html(crunchArticle(results));
+				if (contentTo === 'loaded') {
+					contentArea.html(crunchArticle(results));
+				} else {
+					contentArea.append(crunchArticle(results));
+				}
+				console.log(results);
+				btnLoadmore.attr('data-page', page);
+
 				initAppReader();
 				loadingArea.hide();
 			},
@@ -82,7 +90,7 @@ $(document).ready(function() {
 				<div class="card-panel grey lighten-5 z-depth-1">
 					<div class="row valign-wrapper">
 						<div class="col s12">
-							<img src="${article._embedded['wp:featuredmedia'][0].source_url}" alt="featured-image" class="responsive-img avatar-pic"> <!-- notice the "circle" class -->
+							<img src="${article._embedded !== null && typeof article._embedded['wp:featuredmedia'] !== 'undefined' ? article._embedded['wp:featuredmedia'][0].source_url : 'https://placeimg.com/300/200/animal'}" alt="featured-image" class="responsive-img avatar-pic"> <!-- notice the "circle" class -->
 						</div>
 					</div>
 
@@ -99,14 +107,23 @@ $(document).ready(function() {
 							</div><!-- /.news-content -->
 						</div>
 					</div>
-				</div>
-			`;
+				</div> `;
 		});
 
 		return content;
 	}
 
+	function menuClick() {
+		btnLoadmore.click(function(e) {
+			console.log('~~~ Loadmore')
+			e.preventDefault();
+			let currentPage = parseInt($(this).attr('data-page'));
+			let nextpage = currentPage + 1;
+			getArticles(nextpage, 'append');
+		})
+	}
 
-	getArticles();
+	menuClick();
+	getArticles(1, 'loaded');
 	initAppReader();
 })
