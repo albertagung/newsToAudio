@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Facebook Login JavaScript Example</title>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="./assets/facebook.js"></script>
+  <script type="text/javascript"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="fb-root">
+  <div class="fb-login-button" onlogin="checkLoginState()" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+</div>
+</body>
+<script type="text/javascript">
+if(localStorage.getItem('jwtTokenApp')) {
+  document.getElementById("fb-root").style.display = 'none'
+} else {
+  document.getElementById("fb-root").style.display = 'block'
+}
+
+function logout () {
+  localStorage.removeItem('jwtTokenApp')
+  window.location.reload()
+}
+</script>
+</html>
