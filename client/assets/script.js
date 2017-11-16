@@ -13,6 +13,13 @@ $(document).ready(function() {
 			$(this).find('p:not(:first)').hide()
 		});
 
+
+		$('.readtext').on('click', function(){
+
+			console.log($(this).prev().prev().prev().text())
+			responsiveVoice.speak($(this).prev().prev().prev().text());
+		})
+
 		$('.more').on('click', function(){
 			$(this).next().show();
 			$(this).hide().closest('.news-content').find('p').show();    
@@ -98,11 +105,11 @@ $(document).ready(function() {
 						<div class="col s12">
 							<h5 class="card-title">${article.title.rendered}</h5>
 							<div class="news-content">
-								${article.content.rendered}
-
+								<article class="news">${article.content.rendered}</article>
+								
 								<div class="waves-effect waves-light btn more">More...</div>
 								<div class="waves-effect waves-light btn less">Less...</div>
-								<div class="waves-effect waves-light btn readText">Spell It</div>
+								<div class="waves-effect waves-light btn readtext" id="readtext">Spell It</div>
 								<div class="waves-effect waves-light btn savePocket" data-url="${article.link}">Save to Pocket</div>
 							</div><!-- /.news-content -->
 						</div>
@@ -122,6 +129,7 @@ $(document).ready(function() {
 			getArticles(nextpage, 'append');
 		})
 	}
+
 
 	menuClick();
 	getArticles(1, 'loaded');
