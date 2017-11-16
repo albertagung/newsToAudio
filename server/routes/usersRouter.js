@@ -1,13 +1,14 @@
 let express = require('express');
 let router = express.Router();
 let usersController = require('../controllers/usersController.js')
+let verify = require('../controllers/loginController.js')
 
-router.post('/',usersController.insertDataUser)
+router.post('/',verify.verifyLogin,verify.verifyById,usersController.insertDataUser)
 
-router.get('/',usersController.findAllUser)
+router.get('/',verify.verifyLogin,verify.verifyById,usersController.findAllUser)
 
-router.put('/:id',usersController.updateUserById)
+router.put('/:id',verify.verifyLogin,verify.verifyById,usersController.updateUserById)
 
-router.delete('/:id',usersController.removeUserById)
+router.delete('/:id',verify.verifyLogin,verify.verifyById,usersController.removeUserById)
 
 module.exports = router
