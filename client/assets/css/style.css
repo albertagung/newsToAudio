@@ -1,0 +1,75 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.app-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+body {
+	background: #FCE4EC;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+#loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.avatar-pic{
+	width: 100%;
+}
+
+.wrap {
+	width: 50%;
+	background: white;
+}
+
+.card-title {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.u-full-width {
+	width: 100%;
+}
+
+.nav-wrapper {
+	padding: 0 10px;
+}
+
+.news-content h3 {
+	font-size: 15px;
+}
+
+.news-content h4 {
+	font-size: 14px;
+}
+
+.news-content h5 {
+	font-size: 12px;
+}
+
+.news-content h2 {
+	font-size: 17px;
+}
