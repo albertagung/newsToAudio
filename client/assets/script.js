@@ -103,7 +103,7 @@ $(document).ready(function() {
 								<div class="waves-effect waves-light btn more">More...</div>
 								<div class="waves-effect waves-light btn less">Less...</div>
 								<div class="waves-effect waves-light btn readText">Spell It</div>
-								<div class="waves-effect waves-light btn savePocket" data-url="${article.link}">Save It</div>
+								<div class="waves-effect waves-light btn savePocket" data-url="${article.link}">Save to Pocket</div>
 							</div><!-- /.news-content -->
 						</div>
 					</div>
