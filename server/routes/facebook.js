@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
-const usersFb = require('../controllers/facebook')
-const FB = require('fb')
+var usersFb = require('../controllers/facebook')
+var FB = require('fb')
 
-// const setAccessToken = (req, res, next) => {
-//   FB.setAccessToken(req.headers.accesstoken);
-//   next()
-// }
-router.post('/', usersFb.getUserFB)
+var dataFB = (req, res, next) => {
+  FB.setAccessToken(req.headers.fbaccesstoken)
+  next()
+}
 
+router.post('/', dataFB, usersFb.loginFB)
+router.get('/', dataFB, usersFb.loginFB)
 module.exports = router;

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 const FB = require('fb')
 
 const userFbSchema = new mongoose.Schema({
@@ -13,7 +14,6 @@ function MdlFB (token) {
       resolve(response)
     })
   })
-
 }
 
 
