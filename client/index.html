@@ -13,11 +13,11 @@
 			<nav>
 				<div class="nav-wrapper blue">
 					<a href="#!" class="brand-logo"><i class="material-icons">tablet_android</i>New2Audio</a>
-					
+
 					<div style="text-align: right;">
 						<span>Welcome, <span id="full-name">Steve Jobs</span></span>
-						
-						<a href="#!" class="btn btn-logout red" id="doLogout">Logout</a>
+
+						<a href="#!" class="btn btn-logout red" id="doLogout" onclick="logout()">Logout</a>
 					</div>
 				</div>
 			</nav>
@@ -25,11 +25,11 @@
 			<div class="content" id="content-area">
 
 			</div><!-- /.content -->
-		
+
 			<div id="loading" class="u-full-width">
 				<img src="assets/images/loading.gif" alt="loading" />
 			</div><!-- /#loading -->
-			
+
 			<a id="btnLoadmore" data-page=""  class="waves-effect waves-light btn u-full-width">Load More</a>
 		</div><!-- /.wrap -->
 
@@ -39,4 +39,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	<script src="assets/js/materialize.js"></script>
 	<script src="assets/js/init.js"></script>
 	<script src="assets/script.js"></script>
+	<script>
+		$("#full-name").text(localStorage.getItem('name'))
+	</script>
+	<script type="text/javascript">
+		function logout () {
+			localStorage.removeItem('jwtTokenApp')
+			localStorage.removeItem('name')
+			window.location.href = 'http://localhost:8080/login.html'
+		}
+	</script>
 </html>
