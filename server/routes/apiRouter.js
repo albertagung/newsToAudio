@@ -6,6 +6,8 @@ router.get('/', (req, res) => {
 	res.send('Third Party API');
 })
 
+router.post('/news', apiController.getNews);
 
+router.post('/pocket', apiController.savePocket);
 
 module.exports = router
