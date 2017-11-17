@@ -15,6 +15,8 @@ var users = require('./routes/users');
 var facebook = require('./routes/facebook');
 var app = express();
 
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/login')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

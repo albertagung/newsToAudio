@@ -3,7 +3,9 @@ function statusChangeCallback(response) {
       // console.log('INI RESPONE LOG',response);
       axios.post('http://localhost:3000/facebook',{}, {headers: {token:response.authResponse.accessToken , id: response.authResponse.userID}})
       .then(function (rsp) {
-        localStorage.setItem('jwtTokenApp',rsp.data)
+        localStorage.setItem('jwtTokenApp',rsp.data.token)
+        localStorage.setItem('name', rsp.data.name)
+        window.location.href = 'index.html'
       })
       .catch(function (error) {
         console.log(error);

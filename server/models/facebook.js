@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const FB = require('fb')
+mongoose.connect('mongodb://localhost/login')
 
 const userFbSchema = new mongoose.Schema({
   fb_id: String,
@@ -15,7 +16,6 @@ function MdlFB (token) {
     })
   })
 }
-
 
 const fbuser = mongoose.model('fbuser', userFbSchema)
 

@@ -9,5 +9,7 @@ var dataFB = (req, res, next) => {
 }
 
 router.post('/', dataFB, usersFb.loginFB)
-router.get('/', dataFB, usersFb.loginFB)
+router.post('/tes', usersFb.tesPost)
+router.get('/tes', usersFb.findAll)
+router.delete('/tes/:id', usersFb.delete)
 module.exports = router;
