@@ -41,6 +41,12 @@
 	<script src="assets/script.js"></script>
 	<script>
 		$("#full-name").text(localStorage.getItem('name'))
+
+		if(localStorage.getItem('jwtTokenApp')) { 
+			console.log("You are Logged In");
+		} else {
+			window.location.href = 'http://localhost:8080/login.html'
+		}
 	</script>
 	<script type="text/javascript">
 		function logout () {
