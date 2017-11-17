@@ -73,3 +73,7 @@ img {
 .news-content h2 {
 	font-size: 17px;
 }
+
+.btn-logout {
+	margin-left: 1rem;
+}
