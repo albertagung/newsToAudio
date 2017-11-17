@@ -30,6 +30,7 @@ if(localStorage.getItem('jwtTokenApp')) {
 
 function logout () {
   localStorage.removeItem('jwtTokenApp')
+  localStorage.removeItem('name')
   window.location.reload()
 }
 </script>
